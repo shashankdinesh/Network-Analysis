@@ -1,0 +1,48 @@
+<html>
+<head>
+    <title>Bind SELECT Element with JSON using JavaScript</title>
+    <style>
+    	select, p, input {
+        	font: 1em Calibri;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <input type="button"
+            style="margin:10px 0;"
+                onclick="populateSelect()"
+                    value="Click to Populate SELECT with JSON" />
+    </p>
+
+    <!--The SELECT element.-->
+    <select id="sel" onchange="show(this)">
+        <option value="">-- Select --</option>
+    </select>
+
+    <p id="msg"></p>
+
+    <p style="padding:20px 0;"> Also Read: <a href="https://www.encodedna.com/javascript/get-select-dropdown-list-selected-texts-using-javascript-and-jquery.htm" style="color:#00c;text-decoration:underlined;" target="_blank">How to get the selected text of a SELECT drop-down list using jQuery</a>.</p>
+</body>
+
+<script>
+    function populateSelect() {
+        // THE JSON ARRAY.
+        var birds ={{  }}
+
+        var ele = document.getElementById('sel');
+        for (var i = 0; i < birds.length; i++) {
+            // POPULATE SELECT ELEMENT WITH JSON.
+            ele.innerHTML = ele.innerHTML +
+                '<option value="' + birds[i]['ID'] + '">' + birds[i]['Bird_Name'] + '</option>';
+        }
+    }
+
+    function show(ele) {
+        // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+        var msg = document.getElementById('msg');
+        msg.innerHTML = 'Selected Bird: <b>' + ele.options[ele.selectedIndex].text + '</b> </br>' +
+            'ID: <b>' + ele.value + '</b>';
+    }
+</script>
+</html>
